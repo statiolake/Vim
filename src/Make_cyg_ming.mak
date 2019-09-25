@@ -56,6 +56,9 @@ GUI=yes
 # MinGW-w64 is needed, and ARCH should be set to i686 or x86-64.
 DIRECTX=yes
 
+# set to yes to enable Windows dark mode (EXPERIMENTAL).
+DARKMODE_W32=yes
+
 # Disable Color emoji support
 # (default is yes if DIRECTX=yes, requires WinSDK 8.1 or later.)
 #COLOR_EMOJI=no
@@ -657,6 +660,13 @@ DEFINES += -DFEAT_DIRECTX -DDYNAMIC_DIRECTX
   ifneq ($(COLOR_EMOJI),no)
 DEFINES += -DFEAT_DIRECTX_COLOR_EMOJI
   endif
+ endif
+endif
+
+ifeq ($(DARKMODE_W32),yes)
+ ifeq (yes, $(GUI))
+DEFINES += -DFEAT_DARKMODE_W32
+LIB += -ldwmapi
  endif
 endif
 
