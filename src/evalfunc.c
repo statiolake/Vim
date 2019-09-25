@@ -4499,6 +4499,13 @@ f_has(typval_T *argvars, typval_T *rettv)
 		0
 #endif
 		},
+	{"darkmode_w32",
+#ifdef FEAT_DARKMODE_W32
+		1
+#else
+		0
+#endif
+		},
 	{"debug",
 #ifdef DEBUG
 		1
